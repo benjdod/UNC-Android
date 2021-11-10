@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Environment;
 
 import com.epiinfo.interpreter.Rule_Context;
+import com.epiinfo.unc.Constants;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -54,7 +55,7 @@ public class FormMetadata {
 			IsInterviewForm = false;
 			HasImageFields = false;
 			HasMediaFields = false;
-			File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+			File path = new File(Constants.getFullEPIQuestionaireFolder(container.getApplicationContext()));
 			File file = new File(path, viewXmlFile);
 
 			if (file.lastModified() > 0)

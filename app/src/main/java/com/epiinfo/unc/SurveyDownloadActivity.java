@@ -49,8 +49,7 @@ public class SurveyDownloadActivity extends Activity {
     private static final int FILETYPE_POINTS_ID        = 2;
     private static final int FILETYPE_QUESTIONNAIRE_ID = 3;
     private int currentDownloadFileType = FILETYPE_UNKNOWN_ID;
-    
-    
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -277,7 +276,7 @@ public class SurveyDownloadActivity extends Activity {
 			}
     		
     		// create a File object for the parent directory
-    		UncEpiSettings.selectedSurveyItem.surveyFilesFolderName = "/sdcard/Download/Epiinfo/Questionnaires/Surveys/" + UncEpiSettings.selectedSurveyItem.title;
+    		UncEpiSettings.selectedSurveyItem.surveyFilesFolderName = Constants.getFullEPIQuestionaireFolder(this.getApplicationContext()) + "/Surveys/" + UncEpiSettings.selectedSurveyItem.title;
     		// **** 26Apr2015 - store setting persistently by using shared preferences
 			SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this.getApplication().getApplicationContext());
 			UncEpiSettings.SaveSurveyFilesFolderNameSetting(preferences);
@@ -297,6 +296,7 @@ public class SurveyDownloadActivity extends Activity {
 	        
 	        // create a File object for the output file
 	        File outputFile = new File(fileDirectory, shortFilename);
+	        outputFile.createNewFile();
 	        // now attach the OutputStream to the file object, instead of a String representation
 	        FileOutputStream output = new FileOutputStream(outputFile);
 	        // FileOutputStream output = new FileOutputStream("/sdcard/Download/Epiinfo/ClusterPoints/" + filename);
@@ -364,7 +364,7 @@ public class SurveyDownloadActivity extends Activity {
     	
     	// check if Points file exists
     	if (!UncEpiSettings.selectedSurveyItem.pointsFilename.equals("")) {
-    		filePath = "/sdcard/Download/Epiinfo/Questionnaires/Surveys/" + 
+    		filePath = Constants.getFullEPIQuestionaireFolder(this.getApplicationContext()) + "/Surveys/" +
     	               UncEpiSettings.selectedSurveyItem.title + "/" +
     	               "pointsfile.kml";  // UncEpiSettings.selectedSurveyItem.pointsFilename;
     		File file = new File(filePath);
@@ -383,7 +383,7 @@ public class SurveyDownloadActivity extends Activity {
     	
     	// check if Clusters file exists
     	if (!UncEpiSettings.selectedSurveyItem.clustersFilename.equals("")) {
-    		filePath = "/sdcard/Download/Epiinfo/Questionnaires/Surveys/" + 
+    		filePath = Constants.getFullEPIQuestionaireFolder(this.getApplicationContext()) + "/Surveys/" +
     	               UncEpiSettings.selectedSurveyItem.title + "/" +
     	               "clusterfile.kml";  // UncEpiSettings.selectedSurveyItem.clustersFilename;
     		File file = new File(filePath);
@@ -402,7 +402,7 @@ public class SurveyDownloadActivity extends Activity {
     	
     	// check if Questionnaire Form file exists
     	if (!UncEpiSettings.selectedSurveyItem.formFilename.equals("")) {
-    		filePath = "/sdcard/Download/Epiinfo/Questionnaires/Surveys/" + 
+    		filePath = Constants.getFullEPIQuestionaireFolder(this.getApplicationContext()) + "/Surveys/" +
     	               UncEpiSettings.selectedSurveyItem.title + "/" +
     	               "questionaire.xml";  // UncEpiSettings.selectedSurveyItem.formFilename;
     		File file = new File(filePath);

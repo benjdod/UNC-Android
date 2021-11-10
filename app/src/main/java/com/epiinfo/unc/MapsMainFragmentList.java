@@ -1315,7 +1315,7 @@ public class MapsMainFragmentList extends ListFragment implements OnMapReadyCall
 		 *********************************************************/
 	}
 
-	private void setPointsListView() {
+	private synchronized void setPointsListView() {
 		// Cluster
 
 		mDataListView = (ListView) getListView(); // @ToDo KRC - Needed???
@@ -2256,7 +2256,7 @@ public class MapsMainFragmentList extends ListFragment implements OnMapReadyCall
 
 	// v0.9.57 - suppress warning genertaed by calls to collections calls when sorting points list
 	@SuppressWarnings("unchecked")
-	private void readPointListFile() {
+	private synchronized void readPointListFile() {
 		if (Constants.LOGS_ENABLED5) {
 			Log.d(Constants.LOGTAG, " " + MapsMainFragmentList.CLASSTAG
 					+ " readPointListFile - Enter");
@@ -2538,7 +2538,7 @@ public class MapsMainFragmentList extends ListFragment implements OnMapReadyCall
 		}
 	}
 
-	private void setPointListMarkersInit() {
+	private synchronized void setPointListMarkersInit() {
 		if (Constants.LOGS_ENABLED3) {
 			Log.d(Constants.LOGTAG, " " + MapsMainFragmentList.CLASSTAG
 					+ " setPointListMarkers - Enter");
@@ -2645,7 +2645,7 @@ public class MapsMainFragmentList extends ListFragment implements OnMapReadyCall
 		 ********************************************/
 	}
 
-	private PointItem getPointItemFromList(String pName) {
+	private synchronized PointItem getPointItemFromList(String pName) {
 		if (Constants.LOGS_ENABLED) {
 			Log.d(Constants.LOGTAG, " " + MapsMainFragmentList.CLASSTAG
 					+ " getPointItemFromList - Enter");
@@ -3370,7 +3370,7 @@ public class MapsMainFragmentList extends ListFragment implements OnMapReadyCall
 		return (nullItem);
 	}
 
-	private PointItem findPointItem(final String name) {
+	private synchronized PointItem findPointItem(final String name) {
 		if (Constants.LOGS_ENABLED3) {
 			Log.d(Constants.LOGTAG, " " + MapsMainFragmentList.CLASSTAG
 					+ " findPointItem - enter - name=" + name);
@@ -3392,7 +3392,7 @@ public class MapsMainFragmentList extends ListFragment implements OnMapReadyCall
 	}
 
 	// V0.9.64 New method
-	private PointItem findPointItemForBeginSurvey(final String name) {
+	private synchronized PointItem findPointItemForBeginSurvey(final String name) {
 		if (Constants.LOGS_ENABLED3) {
 			Log.d(Constants.LOGTAG, " " + MapsMainFragmentList.CLASSTAG
 					+ " findPointItemForBeginSurvey - enter - name=" + name);
@@ -3424,7 +3424,7 @@ public class MapsMainFragmentList extends ListFragment implements OnMapReadyCall
 		}
 	}
 
-	private void setClusterPointsView(final String pCluster) {
+	private synchronized void setClusterPointsView(final String pCluster) {
 		if (Constants.LOGS_ENABLED) {
 			Log.d(Constants.LOGTAG, " " + MapsMainFragmentList.CLASSTAG
 					+ " setClusterPointsView - enter cluster=" + pCluster);
@@ -3684,7 +3684,7 @@ public class MapsMainFragmentList extends ListFragment implements OnMapReadyCall
 		return 0;
 	}
 	
-	private void updateAllPointsForStatus() {
+	private synchronized void updateAllPointsForStatus() {
 		if (Constants.LOGS_ENABLED_GETALLPOINTSSTATUS) {
 			Log.d(Constants.LOGTAG, " " + MapsMainFragmentList.CLASSTAG
 					+ " updateAllPointsForStatus - enter");
@@ -3721,7 +3721,7 @@ public class MapsMainFragmentList extends ListFragment implements OnMapReadyCall
 		}
 	}
 
-	private void updatePointForStatus(final String pointName, final String pointStatus,
+	private synchronized void updatePointForStatus(final String pointName, final String pointStatus,
 									  final String pointLatitude, final String pointLongitude) {
 		if (Constants.LOGS_ENABLED_GETALLPOINTSSTATUS) {
 			Log.d(Constants.LOGTAG, " " + MapsMainFragmentList.CLASSTAG
@@ -3836,7 +3836,7 @@ public class MapsMainFragmentList extends ListFragment implements OnMapReadyCall
 	}
 	
 
-	private int writeAllPointsToDb() {
+	private synchronized int writeAllPointsToDb() {
 		if (Constants.LOGS_ENABLED_GETALLPOINTSSTATUS) {
 			Log.v(Constants.LOGTAG, " " + MapsMainFragmentList.CLASSTAG + " writeAllPointsToDb - Enter");
 		}
@@ -3885,7 +3885,7 @@ public class MapsMainFragmentList extends ListFragment implements OnMapReadyCall
 	}
 	
 	
-	private int readAllPointsFromDb() {
+	private synchronized int readAllPointsFromDb() {
 		if (Constants.LOGS_ENABLED_DATABASE) {
 			Log.v(Constants.LOGTAG, " " + MapsMainFragmentList.CLASSTAG + " readAllPointsFromDb - Enter");
 			Log.v(Constants.LOGTAG, " " + MapsMainFragmentList.CLASSTAG + " ^^^^^^^^^^^^^^^^^^^^^^^^^^^");

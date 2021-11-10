@@ -407,11 +407,14 @@ public class RecordEditor extends AppCompatActivity implements ICheckCodeHost
 			CheckCode.Execute();
 		}
 
-		CheckCode = this.Context.GetCommand("level=page&event=before&identifier=" + formMetadata.PageName[0]);
-		if(CheckCode != null)
-		{
-			CheckCode.Execute();
+		if (formMetadata.PageName != null) {
+			CheckCode = this.Context.GetCommand("level=page&event=before&identifier=" + formMetadata.PageName[0]);
+			if(CheckCode != null)
+			{
+				CheckCode.Execute();
+			}
 		}
+
 
 	}
 

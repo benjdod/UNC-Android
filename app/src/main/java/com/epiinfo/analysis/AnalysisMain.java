@@ -216,7 +216,7 @@ public class AnalysisMain extends AppCompatActivity {
 			{
 				viewName = viewName.toLowerCase();
 			}
-			view = new FormMetadata("EpiInfo/Questionnaires/"+ viewName +".xml", this);
+			view = new FormMetadata(viewName +".xml", this);
 			AppManager.AddFormMetadata(viewName, view);
 			dbHelper = new EpiDbHelper(this, view, viewName);
 			dbHelper.open();

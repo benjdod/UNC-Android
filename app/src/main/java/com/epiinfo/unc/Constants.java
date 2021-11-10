@@ -1,6 +1,9 @@
 package com.epiinfo.unc;
 
 
+import android.content.Context;
+import android.os.Environment;
+
 public class Constants {
 
 	public static final String INTENT_ACTION_DISCLAIMER      = "com.epiinfo.unc.DISCLAIMER";
@@ -25,18 +28,23 @@ public class Constants {
     // EPI API Interface
     // public static final String EPI_API_PREFIX = "http://50.16.195.50/epiinfo/api/epi_api.php?";
     // public static final String EPI_API_PREFIX = "http://www.collectsmartdata.com/phase3/api/epi_api3.php?";
-    public static final String EPI_API_PREFIX = "https://collectsmartdata.org/phase32/api/epi_api3.php?";
+    public static final String EPI_API_PREFIX = "https://collectsmartpub-docker-msimon.apps.cloudapps.unc.edu/api/epi_api3.php?";
     
     // KRC v0.9.47 - Use new php command file on server for file uploads
     // public static final String EPI_FILE_UPLOAD_URI   = "http://50.16.195.50/epiinfo/upload/upload.php";
     // public static final String EPI_FILE_UPLOAD_URI   = "http://50.16.195.50/epiinfo/upload/upload2.php";
     // public static final String EPI_FILE_UPLOAD_URI   = "http://www.collectsmartdata.com/phase3/upload/upload2.php";
-    public static final String EPI_FILE_UPLOAD_URI   = "https://collectsmartdata.org/phase32/upload/upload2.php";
+    public static final String EPI_FILE_UPLOAD_URI   = "https://collectsmartpub-docker-msimon.apps.cloudapps.unc.edu/upload/upload2.php";
     // public static final String EPI_FILE_DOWNLOAD_URI = "http://50.16.195.50/epiinfo/Surveys/";
     // public static final String EPI_FILE_DOWNLOAD_URI = "http://www.collectsmartdata.com/phase3";
-    public static final String EPI_FILE_DOWNLOAD_URI = "https://collectsmartdata.org/phase32";
-    
-    public static final String EPI_FILE_QUESTIONAIRE_FOLDER = "/sdcard/Download/Epiinfo/Questionnaires";
+    public static final String EPI_FILE_DOWNLOAD_URI = "https://collectsmartpub-docker-msimon.apps.cloudapps.unc.edu";
+
+    public static final String EPI_FILE_QUESTIONAIRE_FOLDER =  "/Epiinfo/Questionnaires/";
+
+    public static String getFullEPIQuestionaireFolder(Context context) {
+        return context.getFilesDir().getAbsolutePath() + EPI_FILE_QUESTIONAIRE_FOLDER;
+    }
+
     public static final String EPI_FILE_CLUSTERS_FOLDER     = "/sdcard/Download/Epiinfo/Questionnaires";
     public static final String EPI_FILE_POINTS_FOLDER       = "/sdcard/Download/Epiinfo/Questionnaires";
 
@@ -102,8 +110,8 @@ public class Constants {
     public static final boolean LOGS_ENABLED_UPLOAD_SURVEY_FILE = false;
     public static final boolean LOGS_ENABLED_CLUSTERPOLYGON = false;
     public static final boolean LOGS_ENABLED_GETALLPOINTSSTATUS = false;
-    public static final boolean LOGS_ENABLED_LOGINUSER = false;
-    public static final boolean LOGS_ENABLED_SURVEYDOWNLOAD = false;
+    public static final boolean LOGS_ENABLED_LOGINUSER = true;
+    public static final boolean LOGS_ENABLED_SURVEYDOWNLOAD = true;
     public static final boolean LOGS_ENABLED_UNCEPISETTINGS = false;
     public static final boolean LOGS_ENABLED_LOCATION = false;
     public static final boolean LOGS_ENABLED_NETWORKMONITOR = false;
